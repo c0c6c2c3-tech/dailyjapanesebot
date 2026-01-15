@@ -1,9 +1,9 @@
 name: 🇯🇵 Japanese Spartan Quiz
 on:
   schedule:
-    # 每天台灣時間早上 08:00 (UTC 00:00)
-    - cron: '7 22 * * *'
-  workflow_dispatch: # 允許手動執行
+    # 台灣時間 12:05 (UTC 04:05)
+    - cron: '5 4 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -29,17 +29,15 @@ jobs:
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
         run: python Daily_Japanese.py
         
-      - name: Commit and Push (Save New Vocabulary)
+      - name: Commit and Push
         run: |
           git config --global user.name "N2 Bot"
           git config --global user.email "bot@github.com"
           
-          # 只存 JSON 檔
-          git add vocab.json
+          # 同時追蹤兩個 JSON 檔
+          git add vocab.json user_data.json
           
-          # 如果沒有新單字，就不 Commit (避免錯誤)
-          git commit -m "📚 Vocabulary Updated" || echo "No changes to vocabulary"
+          git commit -m "📊 Update Data" || echo "No changes"
           
-          # 使用 Pull Rebase 策略 (與之前財經 Bot 一樣)
-          git pull --rebase origin main
+          git pull origin HEAD --no-rebase
           git push

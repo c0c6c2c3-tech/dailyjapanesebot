@@ -1,4 +1,8 @@
 {
+    "user_stats": {
+      "last_active": "2026-01-14",
+      "streak_days": 1
+    },
     "words": [
       {
         "kanji": "我慢",
@@ -64,4 +68,4 @@
       { "kanji": "補給", "kana": "ほきゅう", "meaning": "補給", "count": 1, "added_date": "2026-01-12" },
       { "kanji": "逃れる", "kana": "のがれる", "meaning": "逃離", "count": 1, "added_date": "2026-01-12" }
     ]
-  }
+ }
