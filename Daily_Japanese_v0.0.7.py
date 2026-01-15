@@ -64,35 +64,45 @@ def normalize_text(text):
     if not text: return ""
     return text.strip().replace("　", " ").lower()
 
-# ================= AI 核心 =================
+# ================= AI 核心 (Prompt 優化版) =================
 
-def ai_correction(user_text, translation_history):
+def ai_correction(user_text, translation_history, progress_status):
     genai.configure(api_key=GEMINI_API_KEY)
     model = genai.GenerativeModel(MODEL_NAME)
     
-    print(f"🤖 AI 正在批改 (合併後長度 {len(user_text)}): {user_text[:20]}...")
+    print(f"🤖 AI 正在批改 (進度 {progress_status})...")
     history_str = "\n".join(translation_history[-10:]) if translation_history else "(尚無歷史紀錄)"
     
+    # 🔥 批改 Prompt：區分必修與 Bonus 的態度
     prompt = f"""
-    使用者正在練習日文，這是她剛剛傳來的內容（可能包含多則訊息的合併）：
+    使用者正在練習日文，這是她剛剛傳來的內容：
     「{user_text}」
     
     【歷史紀錄】
     {history_str}
     
-    請扮演日文教授完成批改：
+    【當前答題進度】
+    {progress_status}
+    
+    請扮演日文教授與斯巴達教練，完成以下任務：
     1. **📈 進度評估**：比較歷史紀錄，判斷是否有進步？給予鼓勵或警惕。
     2. **🎯 批改**：請針對上述內容進行批改，修正錯誤 (✅/❌)。
-    3. **✨ 三種多樣化表達**：
-       - 👔 正式
-       - 🍻 口語
-       - 🔄 換句話說
+    3. **✨ 三種多樣化表達**：提供 正式/口語/換句話說 三種版本。
+    4. **👹 斯巴達即時督促 (重要)**：
+       - 請查看【當前答題進度】。
+       - **情況 A：還在寫每日必修 (10題未滿)**：
+         - 如果進度嚴重落後，請在結尾加上一句**「幽默且帶點嘲諷的催促」** (例如：「才寫一題？手指抽筋了嗎？快點把剩下的交出來！」)。
+         - 如果快完成了，給予鼓勵。
+       - **情況 B：正在寫 Bonus (已進入 Bonus 階段)**：
+         - **絕對禁止罵人或催促**。
+         - Bonus 是額外的努力，無論寫幾題，都請給予高度肯定 (例如：「竟然還願意多寫，這份熱情就是合格的保證！」)。
+         - 重點放在「正確率」與「句型運用」的讚美。
     
     【格式嚴格要求】
     1. **語言**：解說與評語請全程使用「繁體中文」(Traditional Chinese)。
     2. **排版**：
        - **嚴禁** 使用 Markdown 標題 (如 # 或 ##)。
-       - 請使用 Emoji (如 📈, 🎯, ✨, 👔, 🍻, 🔄, ✅, ❌) 來區隔段落與項目。
+       - 請使用 Emoji (如 📈, 🎯, ✨, 👹, 👔, 🍻, 🔄) 來區隔。
        - **嚴禁** 使用 HTML 標籤 (如 <br>)，請直接換行。
     """
     
@@ -120,15 +130,13 @@ def process_data():
             "yesterday_main_score": 0,
             "yesterday_bonus_score": 0,
             "last_update_id": 0,
-            # ✅ 新增難度欄位 (預設 Lv2)
-            "current_difficulty": 2 
+            "current_difficulty": 2
         },
         "pending_answers": "",
         "translation_log": []
     })
     
     stats = user_data["stats"]
-    # 補齊欄位
     if "current_difficulty" not in stats: stats["current_difficulty"] = 2
     for key in ["daily_answers_count", "bonus_answers_count", "yesterday_main_score", 
                 "yesterday_bonus_score", "execution_count", "streak_days", "last_update_id"]:
@@ -166,7 +174,7 @@ def process_data():
             text = item["message"].get("text", "").strip()
             if not text: continue
 
-            # Case A: JSON 匯入
+            # Case A: JSON
             if text.startswith("["):
                 try:
                     imported = json.loads(text)
@@ -221,26 +229,7 @@ def process_data():
                 user_data["translation_log"].append(f"{today_str}: {text[:50]}")
                 is_updated = True
 
-        # === 批改處理 ===
-        if is_fresh_start:
-            if max_id_in_this_run > user_data["stats"]["last_update_id"]:
-                user_data["stats"]["last_update_id"] = max_id_in_this_run
-                is_updated = True
-            print("🚀 初始化完成：忽略舊有訊息。")
-        else:
-            if pending_correction_texts:
-                combined_text = "\n\n".join(pending_correction_texts)
-                history_context = user_data["translation_log"][:-len(pending_correction_texts)]
-                result = ai_correction(combined_text, history_context)
-                
-                title_text = f"📝 **作業/練習批改 (共 {len(pending_correction_texts)} 則合併)：**" if len(pending_correction_texts) > 1 else "📝 **作業/練習批改：**"
-                correction_msgs.append(f"{title_text}\n{result}")
-
-            if max_id_in_this_run > user_data["stats"]["last_update_id"]:
-                user_data["stats"]["last_update_id"] = max_id_in_this_run
-                is_updated = True
-
-        # === 計分邏輯 ===
+        # === 計算計分 ===
         if today_answers_detected > 0:
             current_main = user_data["stats"]["daily_answers_count"]
             main_quota = 10 
@@ -252,6 +241,30 @@ def process_data():
             spill_to_bonus = today_answers_detected - fill_main
             if spill_to_bonus > 0:
                 user_data["stats"]["bonus_answers_count"] += spill_to_bonus
+            is_updated = True
+
+        # === 批改處理 (傳遞進度狀態) ===
+        if not is_fresh_start and pending_correction_texts:
+            combined_text = "\n\n".join(pending_correction_texts)
+            history_context = user_data["translation_log"][:-len(pending_correction_texts)]
+            
+            main_count = user_data["stats"]["daily_answers_count"]
+            bonus_count = user_data["stats"]["bonus_answers_count"]
+            
+            # 判斷目前是在寫必修還是 Bonus
+            if bonus_count > 0:
+                progress_str = f"狀態：Bonus 挑戰中 (已完成 {bonus_count} 題 Bonus)"
+            else:
+                progress_str = f"狀態：每日必修進行中 ({main_count}/10 題)"
+
+            result = ai_correction(combined_text, history_context, progress_str)
+            
+            title_text = f"📝 **作業/練習批改 (共 {len(pending_correction_texts)} 則合併)：**" if len(pending_correction_texts) > 1 else "📝 **作業/練習批改：**"
+            correction_msgs.append(f"{title_text}\n{result}")
+
+        # 更新 update_id
+        if max_id_in_this_run > user_data["stats"]["last_update_id"]:
+            user_data["stats"]["last_update_id"] = max_id_in_this_run
             is_updated = True
 
         # Streak 更新
@@ -276,14 +289,13 @@ def process_data():
         print(f"Error: {e}")
         return load_json(VOCAB_FILE, {}), load_json(USER_DATA_FILE, {})
 
-# ================= 每日特訓生成 (動態難度版) =================
+# ================= 每日特訓生成 =================
 
 def run_daily_quiz(vocab, user):
     if not vocab.get("words"):
         send_telegram("📭 單字庫空的！請傳送單字或匯入 JSON。")
         return user
     
-    # 1. 每次執行先發詳解
     pending_answers = user.get("pending_answers", "")
     if pending_answers:
         send_telegram(f"🗝️ **前次測驗詳解**\n\n{pending_answers}")
@@ -301,9 +313,7 @@ def run_daily_quiz(vocab, user):
     selected_words = random.choices(vocab["words"], weights=weights, k=k)
     word_list = "\n".join([f"{w['kanji']} ({w['meaning']})" for w in selected_words])
 
-    # 取得當前難度
     current_difficulty = user["stats"].get("current_difficulty", 2)
-    # 難度文字描述 (給 AI 看)
     difficulty_desc = {
         1: "Lv1 (新手)：短句，無複合句，專注於單字記憶。",
         2: "Lv2 (初級)：簡單複合句，N3/N4 文法。",
@@ -328,7 +338,7 @@ def run_daily_quiz(vocab, user):
         bonus_score = user["stats"]["yesterday_bonus_score"]
         
         emotion_prompt = ""
-        difficulty_adjustment_msg = "" # 用來告訴使用者難度變了
+        difficulty_adjustment_msg = "" 
 
         if is_first_run:
             emotion_prompt = """
@@ -339,15 +349,13 @@ def run_daily_quiz(vocab, user):
             「每天中午我會出題，隔天中午我會檢討昨天的作業並出新題目。」
             請給予使用者滿滿的信心！
             """
-            # 第一次執行，難度重置為 Lv2 (初級)
             current_difficulty = 2 
             user["stats"]["current_difficulty"] = 2
             
         else:
             answer_rate = main_score / 10
             
-            # === 動態難度調整邏輯 ===
-            if answer_rate >= 0.8: # 表現好 -> 升級
+            if answer_rate >= 0.8: # 表現好
                 if current_difficulty < 5:
                     current_difficulty += 1
                     difficulty_adjustment_msg = "🔥 狀態絕佳！教練決定提升難度，別讓我失望！"
@@ -359,10 +367,10 @@ def run_daily_quiz(vocab, user):
                 else:
                     emotion_prompt = f"昨日表現：必修 {main_score}/10。狀態：優秀。給予高度肯定。並提到「{difficulty_adjustment_msg}」。"
 
-            elif answer_rate >= 0.3: # 表現普通 -> 難度持平
+            elif answer_rate >= 0.3: # 表現普通
                 emotion_prompt = f"昨日表現：必修 {main_score}/10。狀態：尚可。維持目前難度，提醒要更努力。"
                 
-            else: # 表現差 -> 降級
+            else: # 表現差
                 if current_difficulty > 1:
                     current_difficulty -= 1
                     difficulty_adjustment_msg = "📉 看來你累了，我們先降低一點難度，找回手感吧。"
@@ -377,7 +385,6 @@ def run_daily_quiz(vocab, user):
                 **請全程使用繁體中文。**
                 """
             
-            # 儲存調整後的難度
             user["stats"]["current_difficulty"] = current_difficulty
 
         print(f"🤖 生成每日必修 (10題) - 難度: {current_difficulty}...")
@@ -386,9 +393,9 @@ def run_daily_quiz(vocab, user):
         你是日文 N2 斯巴達教練。
         
         【系統資訊】
-        這是第 {exec_count} 次特訓 (Day {streak_days})。
+        這是第 {exec_count} 次特訓。
+        這是連續第 {streak_days} 天的挑戰 (Day {streak_days})。
         **目前難度等級：{difficulty_desc[current_difficulty]}**
-        (請務必根據此難度設定題目的長度與複雜度，不要太難也不要太簡單)
         
         【情緒與開場】
         {emotion_prompt}
@@ -429,33 +436,29 @@ def run_daily_quiz(vocab, user):
             print(f"Error: {e}")
             send_telegram("⚠️ 測驗生成失敗")
 
-    # ================= Scenario B: Bonus 模式 (難度遞增) =================
+    # ================= Scenario B: Bonus 模式 (誘惑開場 + 難度遞增) =================
     else:
-        # 今天的 Bonus 回答數
         bonus_count = user["stats"]["bonus_answers_count"]
-        # Bonus 的難度基礎是「當天必修難度」
         base_diff = user["stats"].get("current_difficulty", 2)
-        
-        # 難度遞增：每做完 3 題 (一輪 Bonus)，難度 +1，最高 Lv5
-        # 例如：必修是 Lv2
-        # 第 1 次 Bonus (bonus_count=0) -> Lv3
-        # 第 2 次 Bonus (bonus_count=3) -> Lv4
-        # 第 3 次 Bonus (bonus_count=6) -> Lv5
         bonus_level_increase = (bonus_count // 3) + 1
         bonus_difficulty = min(5, base_diff + bonus_level_increase)
         
         print(f"🤖 生成 Bonus 挑戰 (3題) - 基礎難度:{base_diff} -> Bonus難度:{bonus_difficulty}...")
         
+        # 🔥 Bonus 提示詞優化：誘惑語氣 + 高難度設定
         prompt = f"""
         你是日文 N2 斯巴達教練。
-        使用者今天已經領過每日作業了，但她**主動**再次執行程式，表示她想要更多練習！
+        使用者今天已經完成每日作業，但她**主動**再次回來執行程式。
+        
+        請用一種**「充滿誘惑力與挑戰性」**的語氣開場。
+        不要只是驚訝，而是要像一位魔鬼教練看到學員主動留下來加練時那種「露齒一笑」的感覺。
+        這是一種對強者的認可，同時帶有挑釁意味：「喔？還不滿足嗎？看來一般的訓練已經無法滿足你的野心了...😏 那就來試試這個吧！」
         
         **Bonus 難度等級：{difficulty_desc[bonus_difficulty]}**
-        (這是一個額外挑戰，請根據此難度出題。如果是 Lv4 以上，可以嘗試較長的句子，但請保持題目只有 3 題)
+        (這是一個額外挑戰，請根據此難度出題，可以比每日必修更難一點)
         
-        請用「驚喜、讚嘆」的語氣，稱讚她的積極度（例如：「天啊！寫完作業還不夠？竟然還要加練？」）。
         並提供 **3 題** 翻譯挑戰 (Bonus Challenge)。
-        **題型要求：2 題中翻日，1 題日翻中 (與必修保持一致的題型結構)。**
+        **題型要求：2 題中翻日，1 題日翻中。**
         
         【今日單字庫】
         {word_list}
@@ -481,8 +484,6 @@ def run_daily_quiz(vocab, user):
             if response.text and "|||SEPARATOR|||" in response.text:
                 parts = response.text.split("|||SEPARATOR|||")
                 send_telegram(parts[0].strip())
-                
-                # Bonus 解答，等待下次執行時發送
                 user["pending_answers"] = parts[1].strip() 
                 
         except Exception as e:
