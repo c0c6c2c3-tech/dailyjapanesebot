@@ -12,7 +12,7 @@ TG_BOT_TOKEN = os.getenv("TG_BOT_TOKEN")
 TG_CHAT_ID = os.getenv("TG_CHAT_ID")
 
 VOCAB_FILE = "vocab.json"
-MODEL_NAME = 'models/gemini-1.5-flash'
+MODEL_NAME = 'models/gemini-2.5-flash'
 
 # 安全設定 (防止 AI 拒絕回答)
 SAFETY_SETTINGS = [
