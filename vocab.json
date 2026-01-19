@@ -267,6 +267,14 @@
       "count": 1,
       "added_date": "2026-01-12",
       "type": "word"
+    },
+    {
+      "kanji": "CH / 中国",
+      "kana": "",
+      "meaning": "翻譯時需完整呈現詞彙，不可使用縮寫或不完整的羅馬拼音。",
+      "type": "word",
+      "count": 5,
+      "added_date": "2026-01-19"
     }
   ]
 }
