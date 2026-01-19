@@ -26,7 +26,7 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
         # 👇 記得要對應新的檔名
-        run: python Daily_Japanese_v0.0.24.py
+        run: python Daily_Japanese_v0.0.27.py
         
       - name: Commit and Push
         run: |
