@@ -9,231 +9,288 @@
       "kana": "がまん",
       "meaning": "忍耐",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "提供",
       "kana": "ていきょう",
       "meaning": "提供/贊助",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "影響",
       "kana": "えいきょう",
       "meaning": "影響",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "深刻",
       "kana": "しんこく",
       "meaning": "嚴肅/嚴重",
       "count": 2,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "構造",
       "kana": "こうぞう",
       "meaning": "構造",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "わかる",
       "kana": "わかる",
       "meaning": "明白",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "行く",
       "kana": "いく",
       "meaning": "去",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "する",
       "kana": "する",
       "meaning": "做",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "来る",
       "kana": "くる",
       "meaning": "來",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "帰る",
       "kana": "かえる",
       "meaning": "回去",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "起きる",
       "kana": "おきる",
       "meaning": "起床",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "寝る",
       "kana": "ねる",
       "meaning": "睡覺",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "食べる",
       "kana": "たべる",
       "meaning": "吃",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "掃除する",
       "kana": "そうじする",
       "meaning": "打掃",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "浴びる",
       "kana": "あびる",
       "meaning": "淋浴",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "洗う",
       "kana": "あらう",
       "meaning": "洗",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "壊れる",
       "kana": "こわれる",
       "meaning": "損壞",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "直る",
       "kana": "なおる",
       "meaning": "修復",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "下がる",
       "kana": "さがる",
       "meaning": "下降",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "迷う",
       "kana": "まよう",
       "meaning": "迷路",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "曲がる",
       "kana": "まがる",
       "meaning": "轉彎",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "むく",
       "kana": "むく",
       "meaning": "剝皮",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "混ぜる",
       "kana": "まぜる",
       "meaning": "攪拌",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "炊く",
       "kana": "たく",
       "meaning": "煮飯",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "蒸す",
       "kana": "むす",
       "meaning": "蒸",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "煮る",
       "kana": "にる",
       "meaning": "煮",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "流す",
       "kana": "ながす",
       "meaning": "沖洗",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "浸ける",
       "kana": "つける",
       "meaning": "浸泡",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "溶かす",
       "kana": "とかす",
       "meaning": "溶解",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "削る",
       "kana": "けずる",
       "meaning": "削",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "凍る",
       "kana": "こおる",
       "meaning": "結冰",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "補給",
       "kana": "ほきゅう",
       "meaning": "補給",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
     },
     {
       "kanji": "逃れる",
       "kana": "のがれる",
       "meaning": "逃離",
       "count": 1,
-      "added_date": "2026-01-12"
+      "added_date": "2026-01-12",
+      "type": "word"
+    },
+    {
+      "kanji": "茹でいた/茹でた",
+      "kana": "",
+      "meaning": "動詞「茹でる」的過去式應為「茹でた」，而非「茹でいた」。若要表示過去進行式，則為「茹でていた」。",
+      "type": "grammar",
+      "count": 5,
+      "added_date": "2026-01-19"
+    },
+    {
+      "kanji": "迷子した/迷子になった",
+      "kana": "",
+      "meaning": "「迷路」的正確說法為「迷子になる」，表示狀態的變化，而不是直接用「迷子する」。",
+      "type": "grammar",
+      "count": 5,
+      "added_date": "2026-01-19"
+    },
+    {
+      "kanji": "駅の前に/駅の前で",
+      "kana": "",
+      "meaning": "表示動作發生的地點時，通常使用助詞「で」而非「に」。在這裡，「迷子になる」是發生的動作。",
+      "type": "grammar",
+      "count": 5,
+      "added_date": "2026-01-19"
     }
   ]
 }
