@@ -1,4 +1,3 @@
-沒問題，這是一份經過排版優化、語法正確的 `README.md` Markdown 代碼。
 # 📖 README.md (操作手冊) - N2 衝刺版
 ## 🇯🇵 AI 日文斯巴達家教 (N2 Spartan Bot: Sprint Edition)
 
