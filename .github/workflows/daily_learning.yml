@@ -26,14 +26,14 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
         # 👇 記得要對應新的檔名
-        run: python Daily_Japanese_v0.0.8.py
+        run: python Daily_Japanese_v0.0.20.py
         
       - name: Commit and Push
         run: |
           git config --global user.name "N2 Bot"
           git config --global user.email "bot@github.com"
           
-          git add vocab.json user_data.json
+          git add vocab.json user_data.json TG_MSG.log
           
           git commit -m "📊 Update Data" || echo "No changes"
           git pull origin HEAD --no-rebase
