@@ -267,46 +267,6 @@
       "count": 1,
       "added_date": "2026-01-12",
       "type": "word"
-    },
-    {
-      "kanji": "茹でいて下さい",
-      "kana": "",
-      "meaning": "動詞活用錯誤，應為「茹でてください」",
-      "type": "grammar",
-      "count": 5,
-      "added_date": "2026-01-19"
-    },
-    {
-      "kanji": "剃る",
-      "kana": "",
-      "meaning": "用詞不精準，削皮應為「削る」或「剥く」",
-      "type": "word_choice",
-      "count": 5,
-      "added_date": "2026-01-19"
-    },
-    {
-      "kanji": "できやしない",
-      "kana": "",
-      "meaning": "口語強調否定用法略顯不自然，應直接使用「できない」",
-      "type": "grammar",
-      "count": 5,
-      "added_date": "2026-01-19"
-    },
-    {
-      "kanji": "美味い",
-      "kana": "",
-      "meaning": "口語表達，書面應為「美味しい」",
-      "type": "word_choice",
-      "count": 5,
-      "added_date": "2026-01-19"
-    },
-    {
-      "kanji": "コーヒー屋",
-      "kana": "",
-      "meaning": "口語名詞，書面可使用「コーヒー店」",
-      "type": "word_choice",
-      "count": 5,
-      "added_date": "2026-01-19"
     }
   ]
 }
