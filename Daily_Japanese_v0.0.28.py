@@ -81,8 +81,7 @@ def send_telegram(message):
     
     try:
         # 🔥 修復：移除 Markdown 語法，恢復正常 URL
-        requests.post(f"[https://api.telegram.org/bot](https://api.telegram.org/bot){TG_BOT_TOKEN}/sendMessage", json={
-            "chat_id": TG_CHAT_ID, "text": clean_msg
+        requests.post(f"https://api.telegram.org/bot{TG_BOT_TOKEN}/sendMessage", json={"chat_id": TG_CHAT_ID, "text": clean_msg
         })
     except Exception as e: print(f"TG 發送失敗: {e}")
 
