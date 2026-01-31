@@ -283,6 +283,22 @@
       "type": "grammar",
       "count": 5,
       "added_date": "2026-01-21"
+    },
+    {
+      "kanji": "天気が降る",
+      "kana": "",
+      "meaning": "「天氣（天氣）」不能作為「降る（下、降）」的主語，通常是「雨（雨）」或「雪（雪）」。",
+      "type": "grammatical",
+      "count": 5,
+      "added_date": "2026-01-31"
+    },
+    {
+      "kanji": "降って",
+      "kana": "",
+      "meaning": "て形不能單獨作為句子的結尾，除非是命令或請求，否則句子不完整。",
+      "type": "grammatical",
+      "count": 5,
+      "added_date": "2026-01-31"
     }
   ]
 }
