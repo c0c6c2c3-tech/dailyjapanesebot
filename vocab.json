@@ -299,6 +299,22 @@
       "type": "grammatical",
       "count": 5,
       "added_date": "2026-01-31"
+    },
+    {
+      "kanji": "明日あなたは大阪ヘ行く",
+      "kana": "",
+      "meaning": "缺少疑問助詞「か」或疑問語氣，導致語句變成肯定句而非疑問句。",
+      "type": "grammar",
+      "count": 5,
+      "added_date": "2026-02-03"
+    },
+    {
+      "kanji": "剥きください",
+      "kana": "",
+      "meaning": "動詞「剥く」的て形接「ください」才表示請求，應為「剥いてください」。",
+      "type": "grammar",
+      "count": 5,
+      "added_date": "2026-02-03"
     }
   ]
 }
