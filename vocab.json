@@ -347,6 +347,38 @@
       "type": "grammar",
       "count": 5,
       "added_date": "2026-02-04"
+    },
+    {
+      "kanji": "日本が行きたい",
+      "kana": "",
+      "meaning": "表示移動目的地的助詞應為「に」或「へ」，非「が」。",
+      "type": "particle",
+      "count": 5,
+      "added_date": "2026-02-05"
+    },
+    {
+      "kanji": "眠りたい",
+      "kana": "",
+      "meaning": "「眠い」是形容詞，若要表達「想睡覺」這個動作，應使用動詞「眠る」的連用形「眠り」接續「たい」，即「眠りたい」。",
+      "type": "verb_conjugation",
+      "count": 5,
+      "added_date": "2026-02-05"
+    },
+    {
+      "kanji": "毎日は",
+      "kana": "",
+      "meaning": "「毎日」作為副詞時，後面不需加「は」。",
+      "type": "particle",
+      "count": 5,
+      "added_date": "2026-02-05"
+    },
+    {
+      "kanji": "顔を洗ってが",
+      "kana": "",
+      "meaning": "動詞「て形」不能直接接續「が重要である」。若要將動詞句名詞化，應使用「～こと」或「～の」。「顔を洗うこと（が/は）重要である」才是正確用法。",
+      "type": "grammar",
+      "count": 5,
+      "added_date": "2026-02-05"
     }
   ]
 }
