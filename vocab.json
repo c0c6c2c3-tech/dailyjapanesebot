@@ -387,6 +387,30 @@
       "type": "word",
       "count": 5,
       "added_date": "2026-02-13"
+    },
+    {
+      "kanji": "降りですが",
+      "kana": "",
+      "meaning": "動詞「降る」連用形「降り」與助詞「が」和斷定助動詞「です」連接錯誤，應改為「降っていますが」或「雨ですが」。",
+      "type": "grammar",
+      "count": 5,
+      "added_date": "2026-02-16"
+    },
+    {
+      "kanji": "とでも",
+      "kana": "",
+      "meaning": "「非常」的日文應為「とても」。",
+      "type": "spelling",
+      "count": 5,
+      "added_date": "2026-02-16"
+    },
+    {
+      "kanji": "眠いたい",
+      "kana": "",
+      "meaning": "「想睡」的正確說法為形容詞「眠い」或動詞「眠る」的變化形「眠りたい」。",
+      "type": "grammar",
+      "count": 5,
+      "added_date": "2026-02-16"
     }
   ]
 }
