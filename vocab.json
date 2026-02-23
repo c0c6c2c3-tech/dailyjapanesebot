@@ -320,8 +320,8 @@
       "kanji": "だがら",
       "kana": "",
       "meaning": "錯字，應為「だから」。且句子未完成，影響語意完整性。",
-      "type": "grammar",
-      "count": 5,
+      "type": "spelling",
+      "count": 7,
       "added_date": "2026-02-04"
     },
     {
@@ -411,6 +411,14 @@
       "type": "grammar",
       "count": 5,
       "added_date": "2026-02-16"
+    },
+    {
+      "kanji": "もいっ",
+      "kana": "",
+      "meaning": "表達不完整，應為「もう一つ」（再一個）或「もう一回」（再一次）等完整詞句。",
+      "type": "incomplete_phrase",
+      "count": 5,
+      "added_date": "2026-02-23"
     }
   ]
 }
