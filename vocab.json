@@ -419,6 +419,14 @@
       "type": "incomplete_phrase",
       "count": 5,
       "added_date": "2026-02-23"
+    },
+    {
+      "kanji": "以及",
+      "kana": "",
+      "meaning": "在此應為「已經」，表示『時間上已經完成或達到某種狀態』，而非連接詞『和、並』。",
+      "type": "word",
+      "count": 5,
+      "added_date": "2026-03-04"
     }
   ]
 }
