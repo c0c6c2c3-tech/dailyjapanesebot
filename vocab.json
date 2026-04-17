@@ -368,8 +368,8 @@
       "kanji": "毎日は",
       "kana": "",
       "meaning": "「毎日」作為副詞時，後面不需加「は」。",
-      "type": "particle",
-      "count": 5,
+      "type": "nuance",
+      "count": 7,
       "added_date": "2026-02-05"
     },
     {
@@ -427,6 +427,70 @@
       "type": "word",
       "count": 5,
       "added_date": "2026-03-04"
+    },
+    {
+      "kanji": "風邪ので",
+      "kana": "",
+      "meaning": "名詞接「ので」應為「名詞＋な＋ので」",
+      "type": "grammar",
+      "count": 5,
+      "added_date": "2026-04-17"
+    },
+    {
+      "kanji": "学校を行きません",
+      "kana": "",
+      "meaning": "動詞「行く」表示目的地時通常搭配助詞「に」",
+      "type": "grammar",
+      "count": 5,
+      "added_date": "2026-04-17"
+    },
+    {
+      "kanji": "とても野菜を食べます",
+      "kana": "",
+      "meaning": "「とても」不常用來修飾動詞表示「量多」，應改用「たくさん」或「よく」",
+      "type": "word_choice",
+      "count": 5,
+      "added_date": "2026-04-17"
+    },
+    {
+      "kanji": "悪いテレビ",
+      "kana": "",
+      "meaning": "形容機器「壞掉/故障」應使用「壊れた」或「調子が悪い」",
+      "type": "word_choice",
+      "count": 5,
+      "added_date": "2026-04-17"
+    },
+    {
+      "kanji": "直する",
+      "kana": "",
+      "meaning": "非正規動詞用法，應為「直す」(他動詞)、「直る」(自動詞) 或「修理する」",
+      "type": "grammar",
+      "count": 5,
+      "added_date": "2026-04-17"
+    },
+    {
+      "kanji": "何時に",
+      "kana": "",
+      "meaning": "詢問不確定時間點應用「いつ」而非「何時に」",
+      "type": "word_choice",
+      "count": 5,
+      "added_date": "2026-04-17"
+    },
+    {
+      "kanji": "我慢ください",
+      "kana": "",
+      "meaning": "「ください」接在動詞て形後，應為「我慢してください」",
+      "type": "grammar",
+      "count": 5,
+      "added_date": "2026-04-17"
+    },
+    {
+      "kanji": "旅行が行きたい",
+      "kana": "",
+      "meaning": "表示「想去旅行」應為「旅行に行きたい」或「旅行したい」",
+      "type": "grammar",
+      "count": 5,
+      "added_date": "2026-04-17"
     }
   ]
 }
